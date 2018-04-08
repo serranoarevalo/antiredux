@@ -8,6 +8,7 @@ const Header = styled.header`
   height: 100px;
   background-color: #ecf0f1;
   padding: 0 40px;
+  margin-bottom: 30px;
 `;
 
 const HeaderIcon = styled.span`
@@ -38,13 +39,13 @@ const HeaderPresenter = ({}) => (
       <FlexItem>
         <Flex>
           <HeaderIcon>
-            <FontAwesome name="user" color={"white"} />
+            <FontAwesome name="user" />
           </HeaderIcon>
           <HeaderIcon>
-            <FontAwesome name="cog" color={"white"} />
+            <FontAwesome name="cog" />
           </HeaderIcon>
           <HeaderIcon>
-            <FontAwesome name="bell" color={"white"} />
+            <FontAwesome name="bell" />
           </HeaderIcon>
         </Flex>
       </FlexItem>

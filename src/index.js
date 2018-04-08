@@ -6,6 +6,9 @@ import reset from "styled-reset";
 import "./typography";
 
 injectGlobal`
-${reset}`;
+${reset};
+body{
+    background-color:#ecf0f1;
+}`;
 
 ReactDOM.render(<App />, document.getElementById("root"));
