@@ -32,7 +32,9 @@ const HeaderIcon = styled.span`
 const HeaderPresenter = ({}) => (
   <Header>
     <Flex full justifyBetween alignCenter>
-      <FlexItem>Antiredux</FlexItem>
+      <FlexItem>
+        <h3>Antiredux</h3>
+      </FlexItem>
       <FlexItem>
         <Flex>
           <HeaderIcon>
