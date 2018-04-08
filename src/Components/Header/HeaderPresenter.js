@@ -1,26 +1,52 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Flex, { FlexItem } from "styled-flex-component";
 import FontAwesome from "react-fontawesome";
 
 const Header = styled.header`
   height: 100px;
   background-color: #ecf0f1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  padding: 0 40px;
 `;
 
 const HeaderIcon = styled.span`
   width: 40px;
   height: 40px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 50%;
+  color: white;
+  background-color: #3498db;
+  margin-right: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease-out;
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  }
 `;
 
 const HeaderPresenter = ({}) => (
   <Header>
-    <HeaderIcon>
-      <FontAwesome name="rocket" />
-    </HeaderIcon>
+    <Flex full justifyBetween alignCenter>
+      <FlexItem>Antiredux</FlexItem>
+      <FlexItem>
+        <Flex>
+          <HeaderIcon>
+            <FontAwesome name="user" color={"white"} />
+          </HeaderIcon>
+          <HeaderIcon>
+            <FontAwesome name="cog" color={"white"} />
+          </HeaderIcon>
+          <HeaderIcon>
+            <FontAwesome name="bell" color={"white"} />
+          </HeaderIcon>
+        </Flex>
+      </FlexItem>
+    </Flex>
   </Header>
 );
 
