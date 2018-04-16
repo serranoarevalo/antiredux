@@ -10,6 +10,11 @@ const Notification = styled.div`
   width: 80%;
   padding: 20px;
   border-radius: 15px;
+  ${props => {
+    if (!props.seen) {
+      return `border:2px solid #f1c40f`;
+    }
+  }};
 `;
 
 const Title = styled.span`
@@ -24,7 +29,7 @@ const Button = styled.button`
   color: white;
   font-size: 16px;
   cursor: pointer;
-  background-color: ${props => (props.seen ? "#7f8c8d" : "#2ecc71")};
+  background-color: ${props => (props.seen ? "#7f8c8d" : "#f1c40f")};
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   transition: all 0.2s ease-out;
   &:hover {
