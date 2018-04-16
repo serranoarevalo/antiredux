@@ -7,7 +7,7 @@ class AppContainer extends Component {
     super(props);
     this._deleteNotification = id => {
       this.setState(prevState => {
-        const newState = delete prevState[id];
+        const newState = delete prevState.notifications[id];
         return newState;
       });
     };

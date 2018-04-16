@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Flex, { FlexItem } from "styled-flex-component";
@@ -59,18 +59,24 @@ const NotificationPresenter = ({ id, text, seen }) => (
       <FlexItem>
         <Store.Consumer>
           {store => (
-            <Button
-              success
-              seen={seen}
-              onClick={() => store.seeNotification(id)}
-            >
-              <FontAwesome name="check" />
-            </Button>
+            <Fragment>
+              <Button
+                success
+                seen={seen}
+                onClick={() => store.seeNotification(id)}
+              >
+                <FontAwesome name="check" />
+              </Button>
+              <Button
+                danger
+                seen={seen}
+                onClick={() => store.deleteNotification(id)}
+              >
+                <FontAwesome name="times" />
+              </Button>
+            </Fragment>
           )}
         </Store.Consumer>
-        <Button danger seen={seen}>
-          <FontAwesome name="times" />
-        </Button>
       </FlexItem>
     </Flex>
   </Notification>
