@@ -48,8 +48,9 @@ function getUnseen(notifications) {
   let unseen = [];
   Object.keys(notifications).map(id => {
     if (!notifications[id].seen) {
-      unseen.push(notifications[id]);
+      return unseen.push(notifications[id]);
     }
+    return null;
   });
   return unseen.length;
 }
