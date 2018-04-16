@@ -1,23 +1,28 @@
 import React, { Fragment } from "react";
-import PropTypes from "prop-types";
 import Header from "Components/Header";
 import Flex from "styled-flex-component";
 import Notification from "Components/Notification";
-import { ThemeContext } from "themeContext";
+import { Store } from "store";
 
-const AppPresenter = store => (
-  <ThemeContext.Provider value={store}>
-    <Fragment>
-      <Header />
-      <Flex justifyCenter full>
-        <Notification />
-      </Flex>
-    </Fragment>
-  </ThemeContext.Provider>
+const AppPresenter = () => (
+  <Fragment>
+    <Header />
+    <Flex alignCenter full column>
+      <Store.Consumer>
+        {store => {
+          return Object.keys(store.notifications).map(key => {
+            return (
+              <Notification
+                key={store.notifications[key].id}
+                text={store.notifications[key].text}
+                seen={store.notifications[key].seen}
+              />
+            );
+          });
+        }}
+      </Store.Consumer>
+    </Flex>
+  </Fragment>
 );
-
-AppPresenter.propTypes = {
-  notifications: PropTypes.object.isRequired
-};
 
 export default AppPresenter;

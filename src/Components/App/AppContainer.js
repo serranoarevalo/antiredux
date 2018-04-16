@@ -1,19 +1,23 @@
 import React, { Component } from "react";
 import AppPresenter from "./AppPresenter";
+import { Store } from "store";
 
 class AppContainer extends Component {
   state = {
     notifications: {
-      "01": {
+      "1": {
+        id: 1,
         text: "Sup!",
         seen: false
       },
-      "02": {
+      "2": {
+        id: 2,
         text: "Wasup!",
         seen: false
       },
-      "03": {
-        text: "Wasup!",
+      "3": {
+        id: 3,
+        text: "Waza!",
         seen: false
       }
     },
@@ -21,7 +25,11 @@ class AppContainer extends Component {
     seeNotification: this._seeNotification
   };
   render() {
-    return <AppPresenter {...this.state} />;
+    return (
+      <Store.Provider value={this.state}>
+        <AppPresenter />
+      </Store.Provider>
+    );
   }
   _deleteNotification = id => {
     this.setState(prevState => {

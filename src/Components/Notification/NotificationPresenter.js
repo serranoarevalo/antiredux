@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
-import Flex from "styled-flex-component";
+import Flex, { FlexItem } from "styled-flex-component";
 import FontAwesome from "react-fontawesome";
 
 const Notification = styled.div`
@@ -9,6 +10,7 @@ const Notification = styled.div`
   width: 80%;
   padding: 20px;
   border-radius: 15px;
+  margin-bottom: 15px;
   ${props => {
     if (!props.seen) {
       return `border:2px solid #f1c40f`;
@@ -28,7 +30,15 @@ const Button = styled.button`
   color: white;
   font-size: 16px;
   cursor: pointer;
-  background-color: ${props => (props.seen ? "#7f8c8d" : "#f1c40f")};
+  background-color: ${props => {
+    if (props.seen) {
+      return "#7f8c8d";
+    } else if (props.success) {
+      return "#2ecc71";
+    } else if (props.danger) {
+      return "#e74c3c";
+    }
+  }};
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   transition: all 0.2s ease-out;
   &:hover {
@@ -44,15 +54,25 @@ const Button = styled.button`
   }
 `;
 
-const NotificationPresenter = () => (
-  <Notification>
+const NotificationPresenter = ({ text, seen }) => (
+  <Notification seen={seen}>
     <Flex alignCenter justifyBetween>
-      <Title>Whatever</Title>
-      <Button>
-        <FontAwesome name="check" />
-      </Button>
+      <Title>{text}</Title>
+      <FlexItem>
+        <Button success seen={seen}>
+          <FontAwesome name="check" />
+        </Button>
+        <Button danger seen={seen}>
+          <FontAwesome name="times" />
+        </Button>
+      </FlexItem>
     </Flex>
   </Notification>
 );
+
+NotificationPresenter.propTypes = {
+  text: PropTypes.string.isRequired,
+  seen: PropTypes.bool.isRequired
+};
 
 export default NotificationPresenter;
