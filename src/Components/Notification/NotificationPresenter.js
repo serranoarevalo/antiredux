@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Consumer } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Flex, { FlexItem } from "styled-flex-component";
 import FontAwesome from "react-fontawesome";
+import { ThemeContext } from "themeContext";
 
 const Notification = styled.div`
   background-color: white;
@@ -48,7 +49,9 @@ const Button = styled.button`
 const NotificationPresenter = ({}) => (
   <Notification>
     <Flex alignCenter justifyBetween>
-      <Title>You have to read something!</Title>
+      <ThemeContext.Consumer>
+        {value => <Title>{value}</Title>}
+      </ThemeContext.Consumer>
       <Button>
         <FontAwesome name="check" />
       </Button>

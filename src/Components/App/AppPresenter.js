@@ -4,16 +4,17 @@ import styled from "styled-components";
 import Header from "Components/Header";
 import Flex, { FlexItem } from "styled-flex-component";
 import Notification from "Components/Notification";
+import { ThemeContext } from "themeContext";
 
 const AppPresenter = ({}) => (
-  <Fragment>
-    <Header />
-    <Flex justifyCenter full>
-      <Notification />
-    </Flex>
-  </Fragment>
+  <ThemeContext.Provider value={"suup"}>
+    <Fragment>
+      <Header />
+      <Flex justifyCenter full>
+        <Notification />
+      </Flex>
+    </Fragment>
+  </ThemeContext.Provider>
 );
-
-AppPresenter.propTypes = {};
 
 export default AppPresenter;
