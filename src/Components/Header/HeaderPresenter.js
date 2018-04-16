@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import Flex, { FlexItem } from "styled-flex-component";
 import FontAwesome from "react-fontawesome";
@@ -44,7 +43,7 @@ const Number = styled.span`
   top: -10px;
 `;
 
-const HeaderPresenter = ({}) => (
+const HeaderPresenter = () => (
   <Header>
     <Flex full justifyBetween alignCenter>
       <FlexItem>
@@ -67,7 +66,5 @@ const HeaderPresenter = ({}) => (
     </Flex>
   </Header>
 );
-
-HeaderPresenter.propTypes = {};
 
 export default HeaderPresenter;

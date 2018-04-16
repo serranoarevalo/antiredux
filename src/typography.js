@@ -27,8 +27,7 @@ const typography = new Typography({
     "Arial",
     "sans-serif"
   ],
-  includeNormalize: false,
-  baseLineHeight: 0
+  includeNormalize: false
 });
 
 typography.injectStyles();

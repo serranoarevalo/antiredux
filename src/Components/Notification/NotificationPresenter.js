@@ -1,7 +1,6 @@
-import React, { Consumer } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import styled from "styled-components";
-import Flex, { FlexItem } from "styled-flex-component";
+import Flex from "styled-flex-component";
 import FontAwesome from "react-fontawesome";
 import { ThemeContext } from "themeContext";
 
@@ -46,7 +45,7 @@ const Button = styled.button`
   }
 `;
 
-const NotificationPresenter = ({}) => (
+const NotificationPresenter = () => (
   <Notification>
     <Flex alignCenter justifyBetween>
       <ThemeContext.Consumer>
@@ -58,7 +57,5 @@ const NotificationPresenter = ({}) => (
     </Flex>
   </Notification>
 );
-
-NotificationPresenter.propTypes = {};
 
 export default NotificationPresenter;
