@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Flex, { FlexItem } from "styled-flex-component";
 import FontAwesome from "react-fontawesome";
+import { Store } from "store";
 
 const Notification = styled.div`
   background-color: white;
@@ -11,11 +12,8 @@ const Notification = styled.div`
   padding: 20px;
   border-radius: 15px;
   margin-bottom: 15px;
-  ${props => {
-    if (!props.seen) {
-      return `border:2px solid #f1c40f`;
-    }
-  }};
+  box-sizing: border-box;
+  border: 2px solid ${props => (props.seen ? "transparent" : "#f1c40f")};
 `;
 
 const Title = styled.span`
@@ -54,14 +52,22 @@ const Button = styled.button`
   }
 `;
 
-const NotificationPresenter = ({ text, seen }) => (
+const NotificationPresenter = ({ id, text, seen }) => (
   <Notification seen={seen}>
     <Flex alignCenter justifyBetween>
       <Title>{text}</Title>
       <FlexItem>
-        <Button success seen={seen}>
-          <FontAwesome name="check" />
-        </Button>
+        <Store.Consumer>
+          {store => (
+            <Button
+              success
+              seen={seen}
+              onClick={() => store.seeNotification(id)}
+            >
+              <FontAwesome name="check" />
+            </Button>
+          )}
+        </Store.Consumer>
         <Button danger seen={seen}>
           <FontAwesome name="times" />
         </Button>
@@ -72,7 +78,8 @@ const NotificationPresenter = ({ text, seen }) => (
 
 NotificationPresenter.propTypes = {
   text: PropTypes.string.isRequired,
-  seen: PropTypes.bool.isRequired
+  seen: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired
 };
 
 export default NotificationPresenter;
