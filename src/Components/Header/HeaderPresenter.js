@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Flex, { FlexItem } from "styled-flex-component";
 import FontAwesome from "react-fontawesome";
+import { ThemeContext } from "themeContext";
 
 const Header = styled.header`
   height: 100px;
@@ -59,7 +60,11 @@ const HeaderPresenter = () => (
           </HeaderIcon>
           <HeaderIcon>
             <FontAwesome name="bell" />
-            <Number>3</Number>
+            <Number>
+              <ThemeContext.Consumer>
+                {store => Object.keys(store.notifications).length}
+              </ThemeContext.Consumer>
+            </Number>
           </HeaderIcon>
         </Flex>
       </FlexItem>
